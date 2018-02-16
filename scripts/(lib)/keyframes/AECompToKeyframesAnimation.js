@@ -215,7 +215,7 @@ var key_values=keyValuesFor(comp,vectorScale,function(value){return[value[0],val
 warnIfUsingMissingFeature(key_values.filter(function(_ref){var _ref$data=_slicedToArray(_ref.data,2);var x=_ref$data[0];var y=_ref$data[1];return x!==100||y!==100;}).length>0,'Scale on vector',vectorScale,rootVectorsGroup,layer,comp);
 }
 if(vectorRotation){
-var _key_values=keyValuesFor(comp,vectorRotation,function(value){return[value%360];});
+var _key_values=keyValuesFor(comp,vectorRotation,function(value){return[value];});
 warnIfUsingMissingFeature(_key_values.filter(function(_ref2){var _ref2$data=_slicedToArray(_ref2.data,1);var value=_ref2$data[0];return value!==0;}).length>0,'Rotation on vector',vectorRotation,rootVectorsGroup,layer,comp);
 }
 
@@ -1483,7 +1483,7 @@ kfAnimGroupPropOpacityAnim={property:'OPACITY',key_values:_key_values5,timing_cu
 case'ADBE Rotate Z':{
 var _timing_curves6=parseTimingFunctionsFromKeyframes(tfProp.keyframes,parseTimingFunctions);
 var _key_values6=keyValuesFor(comp,tfProp,function(value){return[value];});
-if(_key_values6.filter(function(_ref13){var _ref13$data=_slicedToArray(_ref13.data,1);var value=_ref13$data[0];return value%360!==0;}).length>0){
+if(_key_values6.filter(function(_ref13){var _ref13$data=_slicedToArray(_ref13.data,1);var value=_ref13$data[0];return value!==0;}).length>0){
 kfAnimGroupPropRotationAnim={property:'ROTATION',key_values:_key_values6,timing_curves:_timing_curves6};
 }
 }break;

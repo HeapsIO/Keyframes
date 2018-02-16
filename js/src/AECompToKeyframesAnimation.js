@@ -215,7 +215,7 @@ function KfFeatureFromShapeLayer(
     warnIfUsingMissingFeature(key_values.filter(({data:[x, y]}) => x !== 100 || y !== 100).length > 0, 'Scale on vector', vectorScale, rootVectorsGroup, layer, comp);
   }
   if (vectorRotation) {
-    const key_values = keyValuesFor(comp, vectorRotation, (value: number) => [value % 360]);
+    const key_values = keyValuesFor(comp, vectorRotation, (value: number) => [value]);
     warnIfUsingMissingFeature(key_values.filter(({data:[value]}) => value !== 0).length > 0, 'Rotation on vector', vectorRotation, rootVectorsGroup, layer, comp);
   }
 
@@ -1483,7 +1483,7 @@ function parseTransformGroup(
     case 'ADBE Rotate Z': {
       const timing_curves = parseTimingFunctionsFromKeyframes(tfProp.keyframes, parseTimingFunctions);
       const key_values = keyValuesFor(comp, tfProp, (value: number) => [value]);
-      if (key_values.filter(({data:[value]}) => value % 360 !== 0).length > 0) {
+      if (key_values.filter(({data:[value]}) => value !== 0).length > 0) {
         kfAnimGroupPropRotationAnim = {property: 'ROTATION', key_values, timing_curves};
       }
     } break;
