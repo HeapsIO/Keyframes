@@ -127,7 +127,10 @@ function AECompToKeyframesAnimation(comp: CompItem): KfDocument {
 }
 
 function isBitmapLayer(layer: AVLayer | ShapeLayer): bool {
-  return layer['source$__type__'] === 'FootageItem' && layer['source$name'].endsWith('.png');
+  if( layer['source$__type__'] != 'FootageItem' )
+	  return false;
+  var ext = layer['source$name'].toLowerCase().split(".").pop();
+  return ext == "jpg" || ext == "jpeg" || ext == "png" || ext == "gif";
 }
 
 function commonFeatureFromLayer(
